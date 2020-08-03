@@ -1,14 +1,14 @@
 
-//generate random number function
+//generate random number
 
 const generateBtn = document.getElementById("generate-btn");
 generateBtn.addEventListener("click", function(){
     const generateBtndisplay = document.getElementById("generateBtndisplay");
     const generateBtndisplayNum =Math.round( Math.random()*9000)+1000;
-    generateBtndisplay.value = generateBtndisplayNum ;
+   generateBtndisplay.value = generateBtndisplayNum ;
 })
 
-// input keypad number function
+// input keypad number 
 
 document.getElementById("btn9").addEventListener("click", function(){
     document.getElementById("submitBtndisplay").value  += '9';
@@ -48,7 +48,7 @@ document.getElementById("btnSlice").addEventListener("click", function(){
     document.getElementById("submitBtndisplay").value .slice(0, -1);
 })
 
-//  warning notyfy  && tryleft function
+//  warning noty  && tryleft function
 
 notyfyWrong.style.display = "none";
 notyfySucsess.style.display = "none";
@@ -57,8 +57,6 @@ let tryLeftCount = parseInt(tryLeft.innerText);
 let submitInputValue = submitBtndisplay.value;
 
 document.getElementById("submitBtn").addEventListener("click", function(){
-    
-    
     if(generateBtndisplay.value  == "" ){
         document.getElementById("notyfySucsess").style.display = "none";
        document.getElementById("notyfyWrong").style.display = "none";
@@ -82,5 +80,7 @@ document.getElementById("submitBtn").addEventListener("click", function(){
         submitBtn.style.backgroundColor = "red";
         alert("Your Input Number Is Wrong");
     }   
+
+    
 
 })
