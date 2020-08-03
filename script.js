@@ -1,13 +1,14 @@
+
+//generate random number function
+
 const generateBtn = document.getElementById("generate-btn");
 generateBtn.addEventListener("click", function(){
-    const generateBtndisplay = document.getElementById("generateBtndisplay").value;
-    const generateBtndisplayNum = Math.floor(1000 + Math.random(generateBtndisplay.value) * 9000);
-    console.log(generateBtndisplayNum);
-    document.getElementById("generateBtndisplay").value = generateBtndisplayNum ;
+    const generateBtndisplay = document.getElementById("generateBtndisplay");
+    const generateBtndisplayNum =Math.round( Math.random()*9000)+1000;
+    generateBtndisplay.value = generateBtndisplayNum ;
 })
 
-
-
+// input keypad number function
 
 document.getElementById("btn9").addEventListener("click", function(){
     document.getElementById("submitBtndisplay").value  += '9';
@@ -47,21 +48,39 @@ document.getElementById("btnSlice").addEventListener("click", function(){
     document.getElementById("submitBtndisplay").value .slice(0, -1);
 })
 
+//  warning notyfy  && tryleft function
 
 notyfyWrong.style.display = "none";
 notyfySucsess.style.display = "none";
+let tryLeft = document.getElementById('try-left');
+let tryLeftCount = parseInt(tryLeft.innerText);
+let submitInputValue = submitBtndisplay.value;
 
 document.getElementById("submitBtn").addEventListener("click", function(){
-   
-         
-    if (generateBtndisplay.value == submitBtndisplay.value ) {
+    
+    
+    if(generateBtndisplay.value  == "" ){
+        document.getElementById("notyfySucsess").style.display = "none";
+       document.getElementById("notyfyWrong").style.display = "none";
+    }else if (generateBtndisplay.value == submitBtndisplay.value) {
        document.getElementById("notyfySucsess").style.display = "block";
        document.getElementById("notyfyWrong").style.display = "none";
-        
+       if(tryLeftCount == 3){
+        tryLeft.innerText = 3;
+        }
     }
     else{     
         document.getElementById("notyfySucsess").style.display = "none";
         document.getElementById("notyfyWrong").style.display = "block";
+        if(tryLeftCount == 3){
+            tryLeft.innerText --;
+        }
+        
     }
+    if( tryLeft.innerText== 0){
+        submitBtn.disabled  = true;
+        submitBtn.style.backgroundColor = "red";
+        alert("Your Input Number Is Wrong");
+    }   
 
 })
